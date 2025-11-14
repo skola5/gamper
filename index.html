@@ -1,193 +1,111 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ParoMeat — Old School Meat Archive</title>
-<meta name="description" content="A retro-styled meat archive inspired by vintage web aesthetics." />
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Verdana:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  /* Retro, original design inspired by late 90s pages; all original code & content */
-  :root{
-    --bg:#00393b; --panel:#f1fbfa; --ink:#042b2c; --accent:#00c1a7;
-    --bevel1:#00786f; --bevel2:#00e0bf;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:Verdana, Arial, sans-serif;background:linear-gradient(#002e30,#00585a);color:var(--ink)}
-  .container{max-width:980px;margin:28px auto;background:var(--panel);border:6px solid #004e50;box-shadow:8px 8px 0 rgba(0,0,0,0.35);padding:18px}
-  header{display:flex;gap:14px;align-items:center}
-  .logo{width:92px;height:92px;border:4px solid #003836;background:linear-gradient(180deg,#00c8ad,#00937f);display:flex;align-items:center;justify-content:center;color:#012; font-family:'Press Start 2P',monospace;font-size:12px; text-align:center;padding:6px}
-  h1{margin:0;font-size:20px}
-  .tag{font-size:12px;color:#00585a;margin-top:4px}
-  nav{margin-top:12px;padding:8px;background:#006567;border:3px outset #008b79;color:#eafdfa}
-  nav a{color:#eafdfa;margin-right:12px;text-decoration:none;font-weight:bold}
-  .layout{display:flex;gap:14px;margin-top:12px}
-  .main{flex:1;padding:12px;border:4px ridge #00a694;background:linear-gradient(180deg,#fbfffe,#e9faf9)}
-  .side{width:260px;padding:12px;border:4px ridge #00a694;background:#f1fffd}
-  .panel{border:3px solid #00686b;padding:10px;margin-bottom:12px;background:linear-gradient(180deg,#ffffff,#eafefb)}
-  .btn{display:inline-block;padding:8px 12px;border:2px solid #003b3d;background:linear-gradient(180deg,#00e0bf,#00a58e);color:#003235;font-weight:bold;box-shadow:2px 2px 0 rgba(0,0,0,0.25);text-decoration:none}
-  .small{font-size:12px;color:#044}
-  .counter{font-family:'Press Start 2P',monospace;background:#001f20;color:#00ffd8;padding:6px;border:2px inset #00605f;display:inline-block}
-  .gallery{display:flex;flex-wrap:wrap;gap:8px}
-  .meat-card{width:calc(33% - 6px);background:#fff;border:2px solid #d0efe8;padding:8px;border-radius:6px;text-align:center;font-size:13px}
-  .meat-emoji{font-size:28px}
-  footer{margin-top:14px;padding-top:10px;border-top:2px solid #008b88;font-size:12px;color:#004b4b}
-  @media (max-width:760px){.layout{flex-direction:column}.meat-card{width:calc(50% - 6px)}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veiled Liminal Echoes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://i.imgur.com/undefined.jpg') no-repeat center center fixed; /* Use a surreal, liminal image like an empty pool or endless office */
+            background-size: cover;
+            font-family: 'Times New Roman', serif; /* Vintage, dreamlike font */
+            color: #d3d3d3; /* Faded, ghostly text */
+            overflow: hidden;
+            cursor: none; /* Hide cursor for immersion */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)); /* Misty fog effect */
+            z-index: 1;
+            animation: mistDrift 20s linear infinite; /* Slow drifting mist */
+        }
+
+        @keyframes mistDrift {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .header {
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3), 0 0 20px rgba(255,255,255,0.2); /* Ethereal glow */
+            background: rgba(255,255,255,0.05); /* Glassy skeuomorphic panel */
+            padding: 15px 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 5px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.5); /* Inner depth for skeuomorphism */
+            transform: skewX(-5deg); /* Slight distortion for feverdream */
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; transform: skewX(-5deg) scale(1); }
+            50% { opacity: 1; transform: skewX(5deg) scale(1.05); }
+        }
+
+        .text {
+            margin-top: 30px;
+            font-size: 1.1em;
+            max-width: 500px;
+            line-height: 1.6;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); /* Fading paper effect */
+            padding: 20px;
+            border: 2px dashed rgba(255,255,255,0.2); /* Torn notebook skeuomorphism */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            animation: flicker 3s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.85; }
+        }
+
+        .mysterious-button {
+            margin-top: 40px;
+            padding: 10px 25px;
+            font-size: 1em;
+            background: linear-gradient(145deg, #b3b3b3, #808080); /* Metallic, aged button */
+            border: 3px outset #999;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mysterious-button:hover {
+            background: linear-gradient(145deg, #a0a0a0, #6d6d6d);
+            border: 3px inset #999;
+            transform: translateY(3px);
+        }
+
+        .mysterious-button:active {
+            transform: translateY(5px);
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">PARO<br>MEAT</div>
-      <div>
-        <h1>ParoMeat — Old School Meat Archive</h1>
-        <div class="tag">nostalgic pages · curated cuts · retro notes</div>
-      </div>
-    </header>
-
-    <nav>Home · Cuts · Recipes · Gallery · Guestbook · Downloads</nav>
-
-    <div class="layout">
-      <main class="main" role="main">
-        <section class="panel">
-          <h2>About ParoMeat</h2>
-          <p class="small">An original fan-style archive celebrating the many forms of meat: cured, smoked and grilled. We built this page in the spirit of early web archives — simple, direct, and packed with links. Everything here is new content about meats; nothing is copied from other sites.</p>
-        </section>
-
-        <section class="panel">
-          <h2>Featured: Classic Cuts</h2>
-          <div class="gallery" id="gallery">
-            <div class="meat-card"><div class="meat-emoji">🥩</div><strong>Ribeye</strong><div class="small">Marbled steak for searing</div></div>
-            <div class="meat-card"><div class="meat-emoji">🍖</div><strong>Smoked Ham</strong><div class="small">Salt-cured & smoked overnight</div></div>
-            <div class="meat-card"><div class="meat-emoji">🍗</div><strong>Chicken Thigh</strong><div class="small">Juicy, forgiving cut</div></div>
-            <div class="meat-card"><div class="meat-emoji">🥓</div><strong>Bacon</strong><div class="small">Cured & crisped</div></div>
-            <div class="meat-card"><div class="meat-emoji">🦞</div><strong>Surf & Turf</strong><div class="small">Ok, seafood makes an appearance</div></div>
-            <div class="meat-card"><div class="meat-emoji">🧆</div><strong>Ground Beef</strong><div class="small">For burgers & meatballs</div></div>
-          </div>
-        </section>
-
-        <section class="panel">
-          <h2>Quick Recipes (retro)</h2>
-          <ol class="small">
-            <li><strong>Pan-Seared Ribeye:</strong> Salt, pepper, hot cast iron, butter baste.</li>
-            <li><strong>Simple Smoked Ham:</strong> Dry brine 24h, low & slow smoke.</li>
-            <li><strong>Classic Bacon Wrap:</strong> Wrap, bake 200°C until crisp.</li>
-          </ol>
-        </section>
-
-        <section class="panel">
-          <h2>Downloads</h2>
-          <p class="small">Retro wallpapers, printable cut charts, and a tiny CSV of “favorite cuts.” Everything is lightweight and packaged for old browsers.</p>
-          <p><a class="btn" href="#" id="dlWall">Download Wallpaper</a> <a class="btn" href="#" id="dlCSV">Download Cut-List</a></p>
-        </section>
-      </main>
-
-      <aside class="side" role="complementary">
-        <div class="panel">
-          <div style="font-weight:bold">Quick Links</div>
-          <p class="small" style="margin-top:8px">
-            <a href="#" class="small">Cuts index</a><br>
-            <a href="#" class="small">Curing tips</a><br>
-            <a href="#" class="small">Smoking logs</a><br>
-            <a href="#" class="small">Guestbook</a>
-          </p>
-        </div>
-
-        <div class="panel">
-          <div style="font-weight:bold">Visitor Counter</div>
-          <div style="margin-top:8px">
-            <div class="counter" id="counter">000042</div>
-            <div class="small" style="margin-top:6px">visits (simulated)</div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <div style="font-weight:bold">Mini-Notes</div>
-          <p class="small" style="margin-top:8px">Leave a short note in the guestbook. Share a recipe or your favorite cut.</p>
-          <p><a href="#" class="btn" id="guestBtn">Sign Guestbook</a></p>
-        </div>
-
-        <div class="panel">
-          <div style="font-weight:bold">Theme</div>
-          <p style="margin-top:8px" class="small">Click to toggle a playful retro highlight.</p>
-          <p><a href="#" class="btn" id="themeToggle">Toggle Teal</a></p>
-        </div>
-      </aside>
+    <div class="overlay"></div>
+    <div class="content">
+        <h1 class="header">Whispers from the Threshold</h1>
+        <p class="text">In this endless expanse, shadows dance on forgotten walls, echoing dreams that never were. Dare you peer deeper into the abyss?</p>
+        <button class="mysterious-button" onclick="document.body.style.backgroundImage = 'ur[](https://i.imgur.com/shifted.jpg)';">Unveil the Next Layer</button>
     </div>
-
-    <footer>
-      <div>© ParoMeat — Retro-inspired archive about meat. This is an original page; if you want a closer old-site aesthetic, tell me which elements you like and I’ll adapt them (while keeping content original).</div>
-    </footer>
-  </div>
-
-  <script>
-    // small interactive behaviors (original)
-    // Simulated visitor counter (non-persistent)
-    (function(){
-      const counter = document.getElementById('counter');
-      let num = parseInt(counter.textContent,10) || 42;
-      // gently increase on each load
-      num += Math.floor(Math.random()*3);
-      counter.textContent = String(num).padStart(6,'0');
-    })();
-
-    // Download buttons -> create tiny files client-side
-    document.getElementById('dlCSV').addEventListener('click', function(e){
-      e.preventDefault();
-      const csv = 'cut,description\nRibeye,Marbled steak\nBacon,Cured and smoked\nHam,Slow-smoked ham\n';
-      const blob = new Blob([csv], {type:'text/csv'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = 'paro_meat_cuts.csv'; a.click();
-      URL.revokeObjectURL(url);
-    });
-
-    document.getElementById('dlWall').addEventListener('click', function(e){
-      e.preventDefault();
-      // simple generated SVG wallpaper to download
-      const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080'>
-        <rect width='100%' height='100%' fill='#00393b'/>
-        <g fill='#00c1a7' opacity='0.18'>
-          <circle cx='300' cy='200' r='240'/>
-          <circle cx='1600' cy='800' r='300'/>
-        </g>
-        <text x='40' y='1040' fill='#dff6f7' font-family='Verdana' font-size='48'>ParoMeat — Retro Wallpaper</text>
-      </svg>`;
-      const blob = new Blob([svg], {type:'image/svg+xml'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = 'paro_meat_wallpaper.svg'; a.click();
-      URL.revokeObjectURL(url);
-    });
-
-    // guestbook link -> simple prompt and console log (placeholder)
-    document.getElementById('guestBtn').addEventListener('click', function(e){
-      e.preventDefault();
-      const name = prompt('Your name (guestbook):');
-      if(!name) return alert('Canceled.');
-      const note = prompt('Short note (max 200 chars):');
-      if(!note) return alert('No note added.');
-      alert('Thanks! (this demo stores guestbook entries locally only)');
-      // store in localStorage for demo
-      const entries = JSON.parse(localStorage.getItem('paro_guest')||'[]');
-      entries.push({name: name.slice(0,50), text: note.slice(0,200), at: new Date().toISOString()});
-      localStorage.setItem('paro_guest', JSON.stringify(entries));
-      console.log('Guestbook entries:', entries);
-    });
-
-    // theme toggle: mild highlight switch
-    document.getElementById('themeToggle').addEventListener('click', function(e){
-      e.preventDefault();
-      const root = document.documentElement;
-      const current = getComputedStyle(root).getPropertyValue('--panel').trim();
-      if(current === '#f1fbfa'){
-        root.style.setProperty('--panel','#fffbe8');
-        root.style.setProperty('--accent','#ffb36b');
-      } else {
-        root.style.setProperty('--panel','#f1fbfa');
-        root.style.setProperty('--accent','#00c1a7');
-      }
-      // small visual feedback
-      this.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:300});
-    });
-  </script>
 </body>
 </html>
