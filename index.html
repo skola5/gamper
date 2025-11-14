@@ -3,233 +3,194 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FeaverDream — Liminal Space</title>
-  <meta name="description" content="En mystisk liminal-space inspirerad skeuomorfisk GitHub Pages-sida." />
+  <title>FeaverDream — Solig Skeuomorphism</title>
+  <meta name="description" content="En glad, skeuomorfisk och lekfull liminal-space-inspirerad GitHub Pages-sida." />
 
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b0d10;
-      --glass: rgba(255,255,255,0.04);
-      --accent: rgba(175,160,255,0.9);
-      --muted: rgba(255,255,255,0.06);
-      --card: rgba(10,12,14,0.6);
-      --blur: 14px;
+      --bg:#f6fbff;
+      --panel:#fff8f2;
+      --accent1:#ffd166; /* warm yellow */
+      --accent2:#4cc9f0; /* sky */
+      --accent3:#90e0ef; /* soft */
+      --shadow-1: 0 10px 24px rgba(30,40,60,0.12);
+      --shadow-2: 0 6px 18px rgba(30,40,60,0.08);
+      --glass: rgba(255,255,255,0.7);
     }
+
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:#e9e6f7}
+    html,body{height:100%;margin:0;font-family:Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background:linear-gradient(180deg,var(--bg),#e9fbff); color:#1b2330}
 
-    /* full-screen foggy, grainy liminal background */
-    body::before{
-      content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;
-      background: radial-gradient(ellipse at 10% 10%, rgba(30,20,40,0.45), transparent 8%),
-                  radial-gradient(ellipse at 90% 90%, rgba(10,20,60,0.35), transparent 12%);
-      mix-blend-mode:screen; opacity:0.9;
-    }
-    /* animated soft spotlight */
-    .spotlight{position:fixed;inset:-20% -20% -20% -20%;z-index:-3;filter:blur(120px);background:radial-gradient(circle at 40% 35%, rgba(120,100,255,0.12) 0%, transparent 18%, rgba(0,0,0,0.6) 45%)}
+    /* cheerful background shapes */
+    .bg-shape{position:fixed;pointer-events:none;z-index:-2}
+    .blob1{right:-8%;top:-8%;width:520px;height:520px;background:radial-gradient(circle at 30% 30%, rgba(255,209,102,0.95), rgba(255,183,77,0.9) 40%, transparent 60%);filter:blur(40px);border-radius:52%}
+    .blob2{left:-6%;bottom:-6%;width:420px;height:420px;background:radial-gradient(circle at 60% 40%, rgba(76,201,240,0.9), rgba(144,224,239,0.75) 45%, transparent 70%);filter:blur(36px);border-radius:48%}
 
-    /* film grain */
-    .grain{position:fixed;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:0.18;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" fill="white"/></svg>');z-index:9999}
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px}
+    .card{width:min(1100px,96%);border-radius:22px;padding:28px;background:var(--panel);box-shadow:var(--shadow-1);border:1px solid rgba(30,40,60,0.02);display:grid;grid-template-columns:1fr 360px;gap:20px}
 
-    /* container */
-    .wrap{min-height:100vh;display:grid;place-items:center;padding:4rem}
-    .panel{
-      width:min(1100px,94%);
-      border-radius:18px;padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.15));box-shadow: 0 30px 80px rgba(0,0,0,0.7), inset 0 -1px 0 rgba(255,255,255,0.02);
-      backdrop-filter: blur(var(--blur)) saturate(1.1);
-      position:relative;overflow:hidden;border:1px solid rgba(255,255,255,0.04)
-    }
+    header{display:flex;align-items:center;gap:18px}
+    .logo{width:88px;height:88px;border-radius:18px;background:linear-gradient(180deg,var(--accent1), #ffd4a6);box-shadow: 0 8px 20px rgba(255,170,60,0.15), inset 0 2px 6px rgba(255,255,255,0.55);display:flex;align-items:center;justify-content:center}
+    .logo svg{width:54px;height:54px}
+    h1{margin:0;font-family:'Baloo 2', cursive;font-size:1.9rem;color:#12324a}
+    p.lead{margin:4px 0 0;color:#2b3b4a;opacity:0.9}
 
-    /* header */
-    header{display:flex;align-items:center;gap:20px}
-    .logo{
-      width:84px;height:84px;border-radius:20px;background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));box-shadow: 0 6px 20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;flex-shrink:0
-    }
-    .logo svg{width:56px;height:56px;opacity:0.9;filter:drop-shadow(0 10px 20px rgba(120,100,255,0.09))}
-    h1{margin:0;font-weight:700;font-size:1.6rem;letter-spacing:0.6px}
-    p.lead{margin:4px 0 0;color:#cfcbe8;opacity:0.85;font-size:0.95rem}
+    /* main area */
+    .mainbox{padding:18px;border-radius:14px;background:linear-gradient(180deg,#ffffff,#fffaf0);box-shadow:var(--shadow-2);border:1px solid rgba(30,40,60,0.03)}
+    .mainbox h2{margin:4px 0 8px;font-size:1.4rem}
+    .mainbox p{margin:0;color:#234455;line-height:1.6}
 
-    /* central mysterious card */
-    .mystic{
-      margin-top:28px;border-radius:14px;padding:26px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.18));border:1px solid var(--muted);display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start
-    }
+    /* playful skeuomorphic controls */
+    .controls{display:flex;flex-direction:column;gap:14px}
+    .big-btn{appearance:none;border:0;padding:14px 20px;border-radius:14px;background:linear-gradient(180deg,#fff9e6,#fff1cc);box-shadow: 0 10px 22px rgba(50,50,80,0.08), inset 0 6px 12px rgba(255,255,255,0.7);font-weight:800;font-size:1rem;cursor:pointer}
+    .big-btn:active{transform:translateY(2px)}
 
-    .textbox{min-height:260px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(20,18,30,0.25), rgba(8,8,10,0.35));box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
-    .textbox h2{font-family:'Cormorant Garamond', serif;margin:0 0 6px;font-size:1.4rem}
-    .textbox p{color:#d3cee9;line-height:1.6}
+    .glass-btn{padding:8px 12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.75));border:1px solid rgba(30,40,60,0.04);box-shadow:0 6px 12px rgba(30,40,60,0.06);cursor:pointer}
 
-    /* skeuomorphic dial / gadget */
-    .gadget{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));box-shadow: 0 8px 28px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);position:relative}
-    .dial{width:100%;height:220px;border-radius:10px;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.02), transparent 6%), linear-gradient(180deg, rgba(20,18,30,0.6), rgba(5,6,10,0.7));display:flex;align-items:center;justify-content:center;position:relative}
-    .dial .needle{width:6px;height:86px;background:linear-gradient(180deg, var(--accent), rgba(255,255,255,0.6));border-radius:6px;transform-origin:50% 90%;box-shadow: 0 6px 20px rgba(120,100,255,0.06);transition:transform 1s cubic-bezier(.2,.9,.2,1)}
-    .gadget .readout{margin-top:12px;font-size:0.9rem;color:#d6d2f4;text-align:center}
+    .panel-right{display:flex;flex-direction:column;gap:16px}
+    .widget{background:linear-gradient(180deg,#ffffff,#f7fffd);padding:16px;border-radius:12px;border:1px solid rgba(30,40,60,0.03);box-shadow:var(--shadow-2)}
 
-    /* entry button */
-    .enter{display:inline-flex;align-items:center;gap:12px;padding:12px 18px;border-radius:10px;background:linear-gradient(90deg, rgba(175,160,255,0.12), rgba(255,255,255,0.02));border:1px solid rgba(175,160,255,0.14);cursor:pointer;backdrop-filter: blur(6px);box-shadow: 0 8px 30px rgba(109,80,255,0.06)}
-    .enter:active{transform:translateY(1px)}
+    .smile{font-size:3.2rem;line-height:1;margin:0}
+    .meta{font-weight:700;color:#0e2a3a}
 
-    /* footer small */
-    footer{margin-top:22px;color:#bfb8e6;opacity:0.75;font-size:0.88rem;display:flex;justify-content:space-between;align-items:center}
+    /* small decorative skeuomorphic card */
+    .card-mini{display:flex;gap:12px;align-items:center}
+    .btn-3d{padding:10px 14px;border-radius:12px;background:linear-gradient(180deg,#ffd166,#ffb347);border:1px solid rgba(0,0,0,0.06);box-shadow: 0 12px 20px rgba(255,155,60,0.12), inset 0 4px 8px rgba(255,255,255,0.55);cursor:pointer}
 
-    /* subtle animations */
-    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
-    .logo{animation:floaty 6s ease-in-out infinite}
+    /* confetti */
+    .confetti{pointer-events:none;position:fixed;inset:0;z-index:999}
+    .confetti .dot{width:10px;height:10px;border-radius:2px;position:absolute;opacity:0}
 
-    /* responsive */
-    @media (max-width:900px){.mystic{grid-template-columns:1fr;}.gadget{order:-1}.dial{height:180px}}
+    /* footer */
+    footer{margin-top:18px;font-size:0.9rem;color:#2b3b4a;opacity:0.9;display:flex;justify-content:space-between}
 
-    /* micro interactions */
-    .hint{font-size:0.85rem;color:#bfb6e8;opacity:0.9}
-    .hidden{opacity:0;transform:translateY(10px);pointer-events:none}
-
-    /* small glass buttons */
-    .chip{display:inline-block;padding:6px 10px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.03);font-weight:600}
-
+    @media (max-width:900px){.card{grid-template-columns:1fr;}.logo{width:64px;height:64px}}
   </style>
 </head>
 <body>
-  <div class="spotlight"></div>
-  <div class="grain" aria-hidden="true"></div>
+  <div class="bg-shape blob1"></div>
+  <div class="bg-shape blob2"></div>
 
   <main class="wrap">
-    <section class="panel" role="main" aria-labelledby="title">
-      <header>
-        <div class="logo" aria-hidden="true">
-          <!-- stylized glyph -->
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="32" cy="32" r="30" stroke="url(#g)" stroke-width="2" fill="rgba(10,8,12,0.3)" />
-            <path d="M18 36 C26 26, 38 26, 46 36" stroke="white" stroke-opacity="0.08" stroke-width="1.8" fill="none" />
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#c7b7ff" stop-opacity="0.9" />
-                <stop offset="1" stop-color="#7f6ef2" stop-opacity="0.65" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div>
-          <h1 id="title">FeaverDream — Liminal Engine</h1>
-          <p class="lead">En skeuomorfisk drömportal. Varning: innehåll kan kännas bekant men felplacerat.</p>
-        </div>
-      </header>
+    <section class="card" role="main" aria-labelledby="title">
 
-      <div class="mystic">
-        <div class="textbox">
-          <h2>Ingångens löfte</h2>
-          <p id="intro">I gränslandet mellan dröm och dag ligger former av saker som ser ut att fungera — knappar som inte styr något, lampor som aldrig slocknar. Klicka på <span class="chip">ENTER</span> för att låta sidan öppna en spricka. Eller stå kvar. Sidan vakar inte, men den minns.</p>
-
-          <p class="hint" style="margin-top:14px">Tip: Dra i nålen till höger med musen eller klicka på punkten för att väcka olika röstlägen.</p>
-
-          <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
-            <button class="enter" id="enterBtn" aria-label="Enter portal"> <strong>ENTER</strong> <span style="font-size:0.9rem;opacity:0.85">→</span></button>
-            <button class="chip" id="glowToggle">Tänd glöd</button>
-            <button class="chip" id="grainToggle">Film</button>
-          </div>
-
-          <div id="reveal" class="hidden" style="margin-top:18px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));border:1px solid rgba(255,255,255,0.02)">
-            <p style="margin:0;color:#e6e0ff">Du såg det. Ett fragment. Du kan spara det (kopiera) eller blunda. All text här är en maskin: en illusion som skapar mening ur brus.</p>
-          </div>
-
-        </div>
-
-        <aside class="gadget" aria-hidden="false">
-          <div class="dial" id="dial">
-            <div style="position:absolute;left:50%;top:18px;transform:translateX(-50%);text-align:center;color:#ded7ff;opacity:0.9;font-weight:700">SENSOR</div>
-            <div class="needle" id="needle"></div>
-            <!-- interactive tick marks -->
-            <svg viewBox="0 0 200 200" style="width:100%;height:100%;position:absolute;left:0;top:0;pointer-events:none">
-              <circle cx="100" cy="100" r="72" stroke="rgba(255,255,255,0.02)" stroke-width="1" fill="none" />
+      <div>
+        <header>
+          <div class="logo" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="28" r="20" fill="#fff" opacity="0.18" />
+              <path d="M20 36c4 4 12 6 24 0" stroke="#12324a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="24" cy="24" r="2.6" fill="#12324a"/>
+              <circle cx="40" cy="24" r="2.6" fill="#12324a"/>
             </svg>
           </div>
-          <div class="readout">
-            <div id="mode">Läge: <strong id="modeLabel">Vag</strong></div>
-            <div style="margin-top:8px;font-size:0.82rem;color:#cfc7f7">Status: <span id="status">Vilande</span></div>
+          <div>
+            <h1 id="title">FeaverDream — Solig Skeuomorphism</h1>
+            <p class="lead">Glad, varm och lekfull skeuomorfisk estetik — hela sidan känns som ett vänligt instrument.</p>
           </div>
-        </aside>
+        </header>
+
+        <div class="mainbox" style="margin-top:18px">
+          <h2>Välkommen in</h2>
+          <p>Den här sidan är byggd för att kännas trygg, levande och lite knasig — knapparna ser ut att kunna tryckas ned, skuggorna är djupa, och varje kontroll ger tillbaka glädje. Klicka på stora knappen för en överraskning!</p>
+
+          <div style="margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <button class="big-btn" id="happyBtn">TRYCK HÄR — FIRA</button>
+            <button class="glass-btn" id="softToggle">Mjukare skuggor</button>
+            <button class="glass-btn" id="toneToggle">Byt ton</button>
+          </div>
+
+          <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+            <div class="card-mini">
+              <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fff7ec);box-shadow:0 6px 12px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center">
+                <div style="font-size:1.6rem">😊</div>
+              </div>
+              <div>
+                <div class="meta">Glad design</div>
+                <div style="font-size:0.9rem;color:#3a5566">Skeuomorfiska detaljer och lekfulla micro-interaktioner.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <footer>
-        <div>• design: skeuomorphism / liminal-space •</div>
-        <div style="opacity:0.7">Högerklicka för att spara fragment</div>
-      </footer>
+      <aside class="panel-right">
+        <div class="widget">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:0.85rem;color:#2b3b4a;opacity:0.9">Status</div>
+              <div style="font-weight:800;font-size:1.1rem;color:#0e2a3a">Allt är på soligt läge</div>
+            </div>
+            <div style="text-align:center">
+              <div class="smile">☀️</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="font-weight:700">Kontroller</div>
+            <button class="btn-3d" id="miniBtn">Tryck mig</button>
+            <div style="font-size:0.9rem;color:#2b3b4a;opacity:0.9">Knappar är 3D och ger respons — perfekt för glada upplevelser.</div>
+          </div>
+        </div>
+
+        <footer style="margin-top:6px">© FeaverDream — skeuomorphism • glad estetik</footer>
+      </aside>
 
     </section>
   </main>
 
+  <div class="confetti" id="confetti"></div>
+
   <script>
-    // needle micro-interaction
-    const needle = document.getElementById('needle');
-    const dial = document.getElementById('dial');
-    const modeLabel = document.getElementById('modeLabel');
-    const status = document.getElementById('status');
-    const reveal = document.getElementById('reveal');
-    const enterBtn = document.getElementById('enterBtn');
-    const glow = document.getElementById('glowToggle');
-    const grain = document.querySelector('.grain');
+    const happyBtn = document.getElementById('happyBtn');
+    const confettiRoot = document.getElementById('confetti');
+    const softToggle = document.getElementById('softToggle');
+    const toneToggle = document.getElementById('toneToggle');
 
-    let angle = -22; // start
-    needle.style.transform = `rotate(${angle}deg)`;
-
-    // make needle draggable
-    let dragging=false;
-    document.getElementById('dial').addEventListener('pointerdown',(e)=>{dragging=true;document.getElementById('dial').setPointerCapture(e.pointerId)});
-    document.addEventListener('pointerup',()=>dragging=false);
-    document.addEventListener('pointermove',(e)=>{
-      if(!dragging) return;
-      const rect = dial.getBoundingClientRect();
-      const cx = rect.left + rect.width/2; const cy = rect.top + rect.height/2;
-      const dx = e.clientX - cx; const dy = e.clientY - cy;
-      let deg = Math.atan2(dy,dx) * (180/Math.PI);
-      // map to -60..60
-      deg = Math.max(-60, Math.min(60, deg));
-      angle = deg/1.2; needle.style.transform = `rotate(${angle}deg)`;
-      updateModeFromAngle(angle);
-    });
-
-    // also toggle by clicking
-    dial.addEventListener('click', (e)=>{
-      angle = (angle>0) ? -28 : 28; needle.style.transform = `rotate(${angle}deg)`; updateModeFromAngle(angle);
-    });
-
-    function updateModeFromAngle(a){
-      // simple mapping
-      if(a < -18){ modeLabel.textContent='Dämpad'; status.textContent='Sömnig' }
-      else if(a < 18){ modeLabel.textContent='Vag'; status.textContent='Vilande' }
-      else { modeLabel.textContent='Skärpt'; status.textContent='Vakande' }
+    // small confetti generator
+    function popConfetti(){
+      const colors = ['#ffd166','#ef476f','#06d6a0','#118ab2','#ffd6a5','#8ecae6'];
+      for(let i=0;i<24;i++){
+        const d = document.createElement('div'); d.className='dot';
+        const x = Math.random()*100; const y = -10 - Math.random()*20;
+        d.style.left = x+'%'; d.style.top = y+'%'; d.style.background = colors[Math.floor(Math.random()*colors.length)];
+        d.style.transform = `rotate(${Math.random()*360}deg)`;
+        confettiRoot.appendChild(d);
+        // animate
+        const endY = 110 + Math.random()*20;
+        const dur = 1200 + Math.random()*1000;
+        d.animate([{opacity:0, transform:'translateY(0) scale(0.6)'},{opacity:1, transform:'translateY(40px) scale(1)'},{opacity:0, transform:`translateY(${endY}px) scale(0.8) rotate(200deg)`}],{duration:dur,easing:'cubic-bezier(.2,.9,.2,1)'});
+        setTimeout(()=>{ d.remove(); }, dur+80);
+      }
     }
 
-    // enter button
-    enterBtn.addEventListener('click', ()=>{
-      reveal.classList.toggle('hidden');
-      if(!reveal.classList.contains('hidden')){
-        reveal.animate([{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'translateY(0)'}],{duration:420,easing:'cubic-bezier(.2,.9,.2,1)'});
-      }
+    happyBtn.addEventListener('click', ()=>{ popConfetti(); happyBtn.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:420}); });
+
+    // toggle deeper shadows
+    let soft=false;
+    softToggle.addEventListener('click', ()=>{
+      soft = !soft;
+      document.querySelectorAll('.card, .mainbox, .widget').forEach(el=>{
+        el.style.boxShadow = soft ? '0 4px 10px rgba(30,40,60,0.06)' : '0 10px 24px rgba(30,40,60,0.12)';
+      });
     });
 
-    // toggle glow
-    glow.addEventListener('click', ()=>{
-      document.documentElement.style.setProperty('--accent', getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()==='rgba(175,160,255,0.9)'? 'rgba(255,210,130,0.95)' : 'rgba(175,160,255,0.9)');
+    // tone switch (warm / cool)
+    let toneWarm=true;
+    toneToggle.addEventListener('click', ()=>{
+      toneWarm = !toneWarm;
+      if(toneWarm){ document.documentElement.style.setProperty('--panel','#fff8f2'); document.documentElement.style.setProperty('--bg','#f6fbff'); }
+      else { document.documentElement.style.setProperty('--panel','#f7fbff'); document.documentElement.style.setProperty('--bg','#f0f8ff'); }
     });
 
-    // toggle film grain
-    document.getElementById('grainToggle').addEventListener('click', ()=>{grain.style.opacity = grain.style.opacity==='0.02' ? '0.18' : '0.02'});
-
-    // subtle random nudges so page feels alive
-    setInterval(()=>{
-      const jitter = (Math.random()-0.5)*6; angle = Math.max(-58, Math.min(58, angle + jitter)); needle.style.transform = `rotate(${angle}deg)`; updateModeFromAngle(angle);
-    }, 4500);
-
-    // keyboard dark / enter
-    document.addEventListener('keydown',(e)=>{ if(e.key==='Enter') enterBtn.click(); if(e.key==='g') glow.click(); if(e.key==='f') document.getElementById('grainToggle').click(); });
-
-    // right-click fragment hint
-    document.addEventListener('contextmenu', (ev)=>{
-      // small friendly hint
-      ev.preventDefault();
-      alert('Fragment sparat i dinnet (kopiera manuellt)');
+    // playful micro-interaction for miniBtn
+    document.getElementById('miniBtn').addEventListener('click', ()=>{
+      const el = document.getElementById('miniBtn');
+      el.animate([{transform:'translateY(0)'},{transform:'translateY(-8px)'},{transform:'translateY(0)'}],{duration:350});
     });
 
   </script>
