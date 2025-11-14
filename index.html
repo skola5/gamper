@@ -3,196 +3,117 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FeaverDream — Solig Skeuomorphism</title>
-  <meta name="description" content="En glad, skeuomorfisk och lekfull liminal-space-inspirerad GitHub Pages-sida." />
+  <title>FeaverDream — 1999 Teal Edition</title>
+  <meta name="description" content="FeaverDream i 1999-stil: teal, bezel-knappar och nostalgisk webdesign." />
 
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Verdana:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#f6fbff;
-      --panel:#fff8f2;
-      --accent1:#ffd166; /* warm yellow */
-      --accent2:#4cc9f0; /* sky */
-      --accent3:#90e0ef; /* soft */
-      --shadow-1: 0 10px 24px rgba(30,40,60,0.12);
-      --shadow-2: 0 6px 18px rgba(30,40,60,0.08);
-      --glass: rgba(255,255,255,0.7);
-    }
+    /* Retro 1999 teal aesthetic */
+    :root{--bg1:#003f45;--bg2:#007b85;--panel:#dff6f7;--ink:#002b2e;--accent:#00f0c1;--bevel1: #0ac5b1;}
+    html,body{height:100%;margin:0;padding:0;font-family:Verdana, Arial, sans-serif;background:linear-gradient(180deg,var(--bg1),var(--bg2));color:var(--ink);}
 
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Nunito, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background:linear-gradient(180deg,var(--bg),#e9fbff); color:#1b2330}
+    /* tiled background pattern */
+    body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(180deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:40px 40px,40px 40px;opacity:0.25;pointer-events:none}
 
-    /* cheerful background shapes */
-    .bg-shape{position:fixed;pointer-events:none;z-index:-2}
-    .blob1{right:-8%;top:-8%;width:520px;height:520px;background:radial-gradient(circle at 30% 30%, rgba(255,209,102,0.95), rgba(255,183,77,0.9) 40%, transparent 60%);filter:blur(40px);border-radius:52%}
-    .blob2{left:-6%;bottom:-6%;width:420px;height:420px;background:radial-gradient(circle at 60% 40%, rgba(76,201,240,0.9), rgba(144,224,239,0.75) 45%, transparent 70%);filter:blur(36px);border-radius:48%}
+    .page{max-width:980px;margin:36px auto;background:var(--panel);border:6px solid #004b4f;box-shadow:8px 8px 0 rgba(0,0,0,0.35);padding:18px}
 
-    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px}
-    .card{width:min(1100px,96%);border-radius:22px;padding:28px;background:var(--panel);box-shadow:var(--shadow-1);border:1px solid rgba(30,40,60,0.02);display:grid;grid-template-columns:1fr 360px;gap:20px}
+    header{display:flex;align-items:center;gap:14px}
+    .logo-retro{width:92px;height:92px;border:4px solid #002f32;background:linear-gradient(180deg,#00b8a3,#008a80);display:flex;align-items:center;justify-content:center;color:#002b2e;font-family:'Press Start 2P',monospace;font-size:10px}
+    h1{margin:0;font-size:20px;letter-spacing:1px}
+    .tag{font-size:12px;color:#00575a}
 
-    header{display:flex;align-items:center;gap:18px}
-    .logo{width:88px;height:88px;border-radius:18px;background:linear-gradient(180deg,var(--accent1), #ffd4a6);box-shadow: 0 8px 20px rgba(255,170,60,0.15), inset 0 2px 6px rgba(255,255,255,0.55);display:flex;align-items:center;justify-content:center}
-    .logo svg{width:54px;height:54px}
-    h1{margin:0;font-family:'Baloo 2', cursive;font-size:1.9rem;color:#12324a}
-    p.lead{margin:4px 0 0;color:#2b3b4a;opacity:0.9}
+    nav{margin-top:12px;background:#005d60;border:3px outset #008b88;padding:8px}
+    nav a{color:#e8fffb;margin-right:12px;text-decoration:none;font-weight:bold}
 
-    /* main area */
-    .mainbox{padding:18px;border-radius:14px;background:linear-gradient(180deg,#ffffff,#fffaf0);box-shadow:var(--shadow-2);border:1px solid rgba(30,40,60,0.03)}
-    .mainbox h2{margin:4px 0 8px;font-size:1.4rem}
-    .mainbox p{margin:0;color:#234455;line-height:1.6}
+    .main{display:flex;gap:14px;margin-top:14px}
+    .content{flex:1;padding:12px;border:4px ridge #00a99a;background:linear-gradient(180deg,#eafffd,#dff6f7)}
+    .sidebar{width:260px;padding:12px;border:4px ridge #00a99a;background:#e6fffb}
 
-    /* playful skeuomorphic controls */
-    .controls{display:flex;flex-direction:column;gap:14px}
-    .big-btn{appearance:none;border:0;padding:14px 20px;border-radius:14px;background:linear-gradient(180deg,#fff9e6,#fff1cc);box-shadow: 0 10px 22px rgba(50,50,80,0.08), inset 0 6px 12px rgba(255,255,255,0.7);font-weight:800;font-size:1rem;cursor:pointer}
-    .big-btn:active{transform:translateY(2px)}
+    /* 90s buttons */
+    .btn{display:inline-block;padding:10px 14px;border:2px solid #003b3d;background:linear-gradient(180deg,#00c7b0,#00a894);color:#002b2e;font-weight:bold;box-shadow:2px 2px 0 rgba(0,0,0,0.25);text-decoration:none}
+    .btn:active{transform:translate(2px,2px)}
 
-    .glass-btn{padding:8px 12px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.75));border:1px solid rgba(30,40,60,0.04);box-shadow:0 6px 12px rgba(30,40,60,0.06);cursor:pointer}
+    .marquee{background:#002f32;color:#bff7ee;padding:6px;border:2px inset #00857f;font-family:'Press Start 2P',monospace}
 
-    .panel-right{display:flex;flex-direction:column;gap:16px}
-    .widget{background:linear-gradient(180deg,#ffffff,#f7fffd);padding:16px;border-radius:12px;border:1px solid rgba(30,40,60,0.03);box-shadow:var(--shadow-2)}
-
-    .smile{font-size:3.2rem;line-height:1;margin:0}
-    .meta{font-weight:700;color:#0e2a3a}
-
-    /* small decorative skeuomorphic card */
-    .card-mini{display:flex;gap:12px;align-items:center}
-    .btn-3d{padding:10px 14px;border-radius:12px;background:linear-gradient(180deg,#ffd166,#ffb347);border:1px solid rgba(0,0,0,0.06);box-shadow: 0 12px 20px rgba(255,155,60,0.12), inset 0 4px 8px rgba(255,255,255,0.55);cursor:pointer}
-
-    /* confetti */
-    .confetti{pointer-events:none;position:fixed;inset:0;z-index:999}
-    .confetti .dot{width:10px;height:10px;border-radius:2px;position:absolute;opacity:0}
+    /* retro widgets */
+    .panel-retro{border:3px solid #00605f;padding:10px;margin-bottom:12px;background:linear-gradient(180deg,#f7fffd,#e6fffb)}
+    .under{display:block;text-align:center;font-size:12px;margin-top:8px}
 
     /* footer */
-    footer{margin-top:18px;font-size:0.9rem;color:#2b3b4a;opacity:0.9;display:flex;justify-content:space-between}
+    footer{margin-top:16px;padding-top:10px;border-top:2px solid #008b88;font-size:12px;color:#004b4f}
 
-    @media (max-width:900px){.card{grid-template-columns:1fr;}.logo{width:64px;height:64px}}
+    /* responsive-ish */
+    @media (max-width:760px){.main{flex-direction:column}.sidebar{width:100%}}
+
+    /* blink cursor for authenticity */
+    .cursor{display:inline-block;width:10px;background:var(--accent);margin-left:6px;animation:blink 1s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
+
   </style>
 </head>
 <body>
-  <div class="bg-shape blob1"></div>
-  <div class="bg-shape blob2"></div>
-
-  <main class="wrap">
-    <section class="card" role="main" aria-labelledby="title">
-
+  <div class="page">
+    <header>
+      <div class="logo-retro">FEAVER<br>DREAM</div>
       <div>
-        <header>
-          <div class="logo" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="28" r="20" fill="#fff" opacity="0.18" />
-              <path d="M20 36c4 4 12 6 24 0" stroke="#12324a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="24" cy="24" r="2.6" fill="#12324a"/>
-              <circle cx="40" cy="24" r="2.6" fill="#12324a"/>
-            </svg>
-          </div>
-          <div>
-            <h1 id="title">FeaverDream — Solig Skeuomorphism</h1>
-            <p class="lead">Glad, varm och lekfull skeuomorfisk estetik — hela sidan känns som ett vänligt instrument.</p>
-          </div>
-        </header>
-
-        <div class="mainbox" style="margin-top:18px">
-          <h2>Välkommen in</h2>
-          <p>Den här sidan är byggd för att kännas trygg, levande och lite knasig — knapparna ser ut att kunna tryckas ned, skuggorna är djupa, och varje kontroll ger tillbaka glädje. Klicka på stora knappen för en överraskning!</p>
-
-          <div style="margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-            <button class="big-btn" id="happyBtn">TRYCK HÄR — FIRA</button>
-            <button class="glass-btn" id="softToggle">Mjukare skuggor</button>
-            <button class="glass-btn" id="toneToggle">Byt ton</button>
-          </div>
-
-          <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
-            <div class="card-mini">
-              <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fff7ec);box-shadow:0 6px 12px rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center">
-                <div style="font-size:1.6rem">😊</div>
-              </div>
-              <div>
-                <div class="meta">Glad design</div>
-                <div style="font-size:0.9rem;color:#3a5566">Skeuomorfiska detaljer och lekfulla micro-interaktioner.</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h1>FeaverDream — 1999 Teal Edition</h1>
+        <div class="tag">A New Old Web Experience</div>
       </div>
+    </header>
 
-      <aside class="panel-right">
-        <div class="widget">
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <div style="font-size:0.85rem;color:#2b3b4a;opacity:0.9">Status</div>
-              <div style="font-weight:800;font-size:1.1rem;color:#0e2a3a">Allt är på soligt läge</div>
-            </div>
-            <div style="text-align:center">
-              <div class="smile">☀️</div>
-            </div>
-          </div>
+    <nav class="marquee">Welcome to the teal era! <span class="cursor"></span></nav>
+
+    <div class="main">
+      <article class="content">
+        <h2>Välkommen till en ny-gammal webbsida</h2>
+        <p>Det här är en komplett remake i 1999-anda: teal-dominans, rundade men kantiga ramar, <em>beveled</em> knappar och en känsla av att varje klick öppnar ett nytt fönster i IE5. Allt är medvetet "old-school" — inga moderna trender, bara nostalgi.</p>
+
+        <div class="panel-retro">
+          <strong>Under konstruktion</strong>
+          <div class="under">[ GIF: under construction ]</div>
         </div>
 
-        <div class="widget">
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <div style="font-weight:700">Kontroller</div>
-            <button class="btn-3d" id="miniBtn">Tryck mig</button>
-            <div style="font-size:0.9rem;color:#2b3b4a;opacity:0.9">Knappar är 3D och ger respons — perfekt för glada upplevelser.</div>
-          </div>
+        <p>Prova länkarna i menyn, klicka på knapparna och använd mellanslag för att hoppa lite (ja, vi låtsas att vi har en sida för varje sak).</p>
+
+        <p style="margin-top:12px;"><a href="#" class="btn">Besök Gästbok</a> <a href="#" class="btn">Ladda Ner Tema</a></p>
+      </article>
+
+      <aside class="sidebar">
+        <div class="panel-retro">
+          <div style="font-weight:bold">Snabbinfo</div>
+          <div style="font-size:12px;margin-top:8px">Tema: Teal / Retro<br>Font: Press Start 2P (pixel)</div>
         </div>
 
-        <footer style="margin-top:6px">© FeaverDream — skeuomorphism • glad estetik</footer>
+        <div class="panel-retro">
+          <div style="font-weight:bold">Kontroller</div>
+          <p style="margin:10px 0"><a href="#" class="btn">Klicka</a></p>
+        </div>
+
+        <div class="panel-retro">
+          <div style="font-weight:bold">Besöksräknare</div>
+          <div style="font-family:'Press Start 2P',monospace;font-size:12px;margin-top:8px;background:#001e20;color:#00f0c1;padding:6px;border:2px inset #00605f">000124</div>
+        </div>
       </aside>
+    </div>
 
-    </section>
-  </main>
-
-  <div class="confetti" id="confetti"></div>
+    <footer>
+      <div>© FeaverDream 1999-stil — design: teal, bevels och pixelcharm.</div>
+      <div style="margin-top:6px;">Tips: vill du ha en blinkande GIF, TrueColor-bakgrund eller en Pop-up från 1999? Säg till.</div>
+    </footer>
+  </div>
 
   <script>
-    const happyBtn = document.getElementById('happyBtn');
-    const confettiRoot = document.getElementById('confetti');
-    const softToggle = document.getElementById('softToggle');
-    const toneToggle = document.getElementById('toneToggle');
-
-    // small confetti generator
-    function popConfetti(){
-      const colors = ['#ffd166','#ef476f','#06d6a0','#118ab2','#ffd6a5','#8ecae6'];
-      for(let i=0;i<24;i++){
-        const d = document.createElement('div'); d.className='dot';
-        const x = Math.random()*100; const y = -10 - Math.random()*20;
-        d.style.left = x+'%'; d.style.top = y+'%'; d.style.background = colors[Math.floor(Math.random()*colors.length)];
-        d.style.transform = `rotate(${Math.random()*360}deg)`;
-        confettiRoot.appendChild(d);
-        // animate
-        const endY = 110 + Math.random()*20;
-        const dur = 1200 + Math.random()*1000;
-        d.animate([{opacity:0, transform:'translateY(0) scale(0.6)'},{opacity:1, transform:'translateY(40px) scale(1)'},{opacity:0, transform:`translateY(${endY}px) scale(0.8) rotate(200deg)`}],{duration:dur,easing:'cubic-bezier(.2,.9,.2,1)'});
-        setTimeout(()=>{ d.remove(); }, dur+80);
+    // tiny retro behaviors
+    document.addEventListener('keydown', (e)=>{
+      if(e.code==='Space'){
+        document.body.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:260});
       }
-    }
-
-    happyBtn.addEventListener('click', ()=>{ popConfetti(); happyBtn.animate([{transform:'translateY(0)'},{transform:'translateY(-6px)'},{transform:'translateY(0)'}],{duration:420}); });
-
-    // toggle deeper shadows
-    let soft=false;
-    softToggle.addEventListener('click', ()=>{
-      soft = !soft;
-      document.querySelectorAll('.card, .mainbox, .widget').forEach(el=>{
-        el.style.boxShadow = soft ? '0 4px 10px rgba(30,40,60,0.06)' : '0 10px 24px rgba(30,40,60,0.12)';
-      });
     });
 
-    // tone switch (warm / cool)
-    let toneWarm=true;
-    toneToggle.addEventListener('click', ()=>{
-      toneWarm = !toneWarm;
-      if(toneWarm){ document.documentElement.style.setProperty('--panel','#fff8f2'); document.documentElement.style.setProperty('--bg','#f6fbff'); }
-      else { document.documentElement.style.setProperty('--panel','#f7fbff'); document.documentElement.style.setProperty('--bg','#f0f8ff'); }
-    });
-
-    // playful micro-interaction for miniBtn
-    document.getElementById('miniBtn').addEventListener('click', ()=>{
-      const el = document.getElementById('miniBtn');
-      el.animate([{transform:'translateY(0)'},{transform:'translateY(-8px)'},{transform:'translateY(0)'}],{duration:350});
-    });
-
+    // marquee cursor faux-typing
+    const cursor = document.querySelector('.cursor');
+    setInterval(()=>{ cursor.style.opacity = cursor.style.opacity==='0'? '1':'0'}, 600);
   </script>
 </body>
 </html>
