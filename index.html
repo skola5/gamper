@@ -1,112 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veiled Liminal Echoes</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: url('https://i.imgur.com/undefined.jpg') no-repeat center center fixed; /* Use a surreal, liminal image like an empty pool or endless office */
-            background-size: cover;
-            font-family: 'Times New Roman', serif; /* Vintage, dreamlike font */
-            color: #d3d3d3; /* Faded, ghostly text */
-            overflow: hidden;
-            cursor: auto; /* Show default cursor for visibility */
-            font-size: 1.2em; /* Slightly larger base font size */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dev Utility Hub</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --accent: #38bdf8;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --bad: #ef4444;
+      --good: #22c55e;
+    }
 
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)); /* Misty fog effect */
-            z-index: 1;
-            animation: mistDrift 20s linear infinite; /* Slow drifting mist */
-        }
+    * { box-sizing: border-box; }
 
-        @keyframes mistDrift {
-            0% { background-position: 0 0; }
-            100% { background-position: 100px 100px; }
-        }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(160deg, #020617, #0f172a);
+      color: var(--text);
+      min-height: 100vh;
+    }
 
-        .content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-            padding: 40px; /* Increased padding for larger feel */
-        }
+    header {
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid #1f2933;
+    }
 
-        .header {
-            font-size: 4em; /* Larger header font */
-            text-shadow: 0 0 15px rgba(255,255,255,0.3), 0 0 30px rgba(255,255,255,0.2); /* Enhanced ethereal glow */
-            background: rgba(255,255,255,0.05); /* Glassy skeuomorphic panel */
-            padding: 25px 50px; /* Larger padding */
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px; /* Slightly larger radius */
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Deeper inner shadow */
-            transform: skewX(-5deg); /* Slight distortion for feverdream */
-            animation: pulse 8s ease-in-out infinite;
-        }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+    }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 0.8; transform: skewX(-5deg) scale(1); }
-            50% { opacity: 1; transform: skewX(5deg) scale(1.1); } /* Slightly larger scale */
-        }
+    header p {
+      margin-top: 0.5rem;
+      color: var(--muted);
+    }
 
-        .text {
-            margin-top: 50px; /* More space */
-            font-size: 1.5em; /* Larger text font */
-            max-width: 800px; /* Wider max width for bigger appearance */
-            line-height: 1.8; /* More spacing */
-            background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0)); /* Fading paper effect */
-            padding: 30px; /* Larger padding */
-            border: 2px dashed rgba(255,255,255,0.2); /* Torn notebook skeuomorphism */
-            box-shadow: 0 6px 18px rgba(0,0,0,0.6); /* Deeper shadow */
-            animation: flicker 3s infinite alternate;
-        }
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
 
-        @keyframes flicker {
-            0% { opacity: 1; }
-            100% { opacity: 0.85; }
-        }
+    .card {
+      background: var(--panel);
+      border-radius: 14px;
+      padding: 1.25rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
 
-        .mysterious-button {
-            margin-top: 60px; /* More space */
-            padding: 15px 40px; /* Larger button */
-            font-size: 1.5em; /* Larger font */
-            background: linear-gradient(145deg, #b3b3b3, #808080); /* Metallic, aged button */
-            border: 3px outset #999;
-            box-shadow: 0 7px 15px rgba(0,0,0,0.4); /* Deeper shadow */
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
 
-        .mysterious-button:hover {
-            background: linear-gradient(145deg, #a0a0a0, #6d6d6d);
-            border: 3px inset #999;
-            transform: translateY(4px); /* Slightly more movement */
-        }
+    textarea, input {
+      width: 100%;
+      background: #020617;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      color: var(--text);
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      resize: vertical;
+    }
 
-        .mysterious-button:active {
-            transform: translateY(6px);
-        }
-    </style>
+    button {
+      margin-top: 0.75rem;
+      padding: 0.6rem 1rem;
+      background: var(--accent);
+      color: #020617;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button:hover {
+      filter: brightness(1.1);
+    }
+
+    pre {
+      background: #020617;
+      border-radius: 8px;
+      padding: 0.75rem;
+      overflow-x: auto;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .strength {
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid #1f2933;
+    }
+  </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="content">
-        <h1 class="header">Whispers from the Threshold</h1>
-        <p class="text">In this endless expanse, shadows dance on forgotten walls, echoing dreams that never were. Dare you peer deeper into the abyss?</p>
-        <button class="mysterious-button" onclick="document.body.style.backgroundImage = 'ur[](https://i.imgur.com/shifted.jpg)';">Unveil the Next Layer</button>
+  <header>
+    <h1>Dev Utility Hub</h1>
+    <p>Fast tools. No fluff. Pure usefulness.</p>
+  </header>
+
+  <main>
+    <!-- JSON Formatter -->
+    <div class="card">
+      <h2>JSON Formatter</h2>
+      <textarea id="jsonInput" rows="6" placeholder='{"name":"example"}'></textarea>
+      <button onclick="formatJSON()">Format</button>
+      <pre id="jsonOutput"></pre>
     </div>
+
+    <!-- Password Strength -->
+    <div class="card">
+      <h2>Password Strength Check</h2>
+      <input id="passwordInput" type="password" placeholder="Type password" oninput="checkStrength()" />
+      <div id="strengthResult" class="strength"></div>
+    </div>
+
+    <!-- Timestamp Converter -->
+    <div class="card">
+      <h2>Unix Timestamp Converter</h2>
+      <input id="timestampInput" placeholder="e.g. 1700000000" />
+      <button onclick="convertTimestamp()">Convert</button>
+      <pre id="timestampOutput"></pre>
+    </div>
+
+    <!-- Markdown Preview -->
+    <div class="card">
+      <h2>Markdown Preview</h2>
+      <textarea id="mdInput" rows="6" placeholder="# Title\n**bold** text"></textarea>
+      <button onclick="renderMarkdown()">Render</button>
+      <pre id="mdOutput"></pre>
+    </div>
+  </main>
+
+  <footer>
+    Built for GitHub Pages. One file. Zero excuses.
+  </footer>
+
+  <script>
+    function formatJSON() {
+      const input = document.getElementById('jsonInput').value;
+      const output = document.getElementById('jsonOutput');
+      try {
+        const obj = JSON.parse(input);
+        output.textContent = JSON.stringify(obj, null, 2);
+      } catch (e) {
+        output.textContent = 'Invalid JSON';
+      }
+    }
+
+    function checkStrength() {
+      const pwd = document.getElementById('passwordInput').value;
+      const out = document.getElementById('strengthResult');
+      let score = 0;
+      if (pwd.length >= 8) score++;
+      if (/[A-Z]/.test(pwd)) score++;
+      if (/[0-9]/.test(pwd)) score++;
+      if (/[^A-Za-z0-9]/.test(pwd)) score++;
+
+      if (!pwd) {
+        out.textContent = '';
+        return;
+      }
+
+      if (score <= 1) {
+        out.textContent = 'Weak';
+        out.style.color = 'var(--bad)';
+      } else if (score === 2) {
+        out.textContent = 'Medium';
+        out.style.color = '#eab308';
+      } else {
+        out.textContent = 'Strong';
+        out.style.color = 'var(--good)';
+      }
+    }
+
+    function convertTimestamp() {
+      const val = document.getElementById('timestampInput').value;
+      const out = document.getElementById('timestampOutput');
+      const num = Number(val);
+      if (!num) {
+        out.textContent = 'Invalid timestamp';
+        return;
+      }
+      const date = new Date(num * 1000);
+      out.textContent = date.toString();
+    }
+
+    function renderMarkdown() {
+      const src = document.getElementById('mdInput').value;
+      let html = src
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
+        .replace(/\*(.*)\*/gim, '<i>$1</i>')
+        .replace(/\n$/gim, '<br />');
+      document.getElementById('mdOutput').innerHTML = html;
+    }
+  </script>
 </body>
 </html>
