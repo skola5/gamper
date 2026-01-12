@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dev Utility Hub</title>
+  <title>Dev Utility Hub – Extended</title>
   <style>
     :root {
-      --bg: #0f172a;
-      --panel: #111827;
+      --bg: #020617;
+      --panel: #0f172a;
       --accent: #38bdf8;
       --text: #e5e7eb;
       --muted: #9ca3af;
       --bad: #ef4444;
+      --warn: #eab308;
       --good: #22c55e;
     }
 
@@ -19,8 +20,8 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(160deg, #020617, #0f172a);
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(160deg, #020617, #020617, #0f172a);
       color: var(--text);
       min-height: 100vh;
     }
@@ -28,13 +29,12 @@
     header {
       padding: 2rem;
       text-align: center;
-      border-bottom: 1px solid #1f2933;
+      border-bottom: 1px solid #1f2937;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
-      letter-spacing: 1px;
+      font-size: 2.4rem;
     }
 
     header p {
@@ -53,7 +53,7 @@
       background: var(--panel);
       border-radius: 14px;
       padding: 1.25rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
     }
 
     .card h2 {
@@ -62,7 +62,7 @@
       color: var(--accent);
     }
 
-    textarea, input {
+    textarea, input, select {
       width: 100%;
       background: #020617;
       border: 1px solid #1f2937;
@@ -84,9 +84,7 @@
       cursor: pointer;
     }
 
-    button:hover {
-      filter: brightness(1.1);
-    }
+    button:hover { filter: brightness(1.1); }
 
     pre {
       background: #020617;
@@ -95,11 +93,7 @@
       overflow-x: auto;
       margin-top: 0.5rem;
       font-size: 0.85rem;
-    }
-
-    .strength {
-      margin-top: 0.5rem;
-      font-weight: 600;
+      min-height: 40px;
     }
 
     footer {
@@ -107,113 +101,142 @@
       padding: 1.5rem;
       color: var(--muted);
       font-size: 0.85rem;
-      border-top: 1px solid #1f2933;
+      border-top: 1px solid #1f2937;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Dev Utility Hub</h1>
-    <p>Fast tools. No fluff. Pure usefulness.</p>
+    <p>One file. Too many tools. No excuses.</p>
   </header>
 
   <main>
-    <!-- JSON Formatter -->
+
     <div class="card">
-      <h2>JSON Formatter</h2>
-      <textarea id="jsonInput" rows="6" placeholder='{"name":"example"}'></textarea>
-      <button onclick="formatJSON()">Format</button>
+      <h2>JSON Formatter / Minifier</h2>
+      <textarea id="jsonInput"></textarea>
+      <button onclick="formatJSON(true)">Format</button>
+      <button onclick="formatJSON(false)">Minify</button>
       <pre id="jsonOutput"></pre>
     </div>
 
-    <!-- Password Strength -->
     <div class="card">
-      <h2>Password Strength Check</h2>
-      <input id="passwordInput" type="password" placeholder="Type password" oninput="checkStrength()" />
-      <div id="strengthResult" class="strength"></div>
+      <h2>Base64 Encode / Decode</h2>
+      <textarea id="b64Input"></textarea>
+      <button onclick="encodeB64()">Encode</button>
+      <button onclick="decodeB64()">Decode</button>
+      <pre id="b64Output"></pre>
     </div>
 
-    <!-- Timestamp Converter -->
     <div class="card">
-      <h2>Unix Timestamp Converter</h2>
-      <input id="timestampInput" placeholder="e.g. 1700000000" />
+      <h2>Password Strength</h2>
+      <input id="passwordInput" type="password" oninput="checkStrength()" />
+      <pre id="passwordOutput"></pre>
+    </div>
+
+    <div class="card">
+      <h2>Unix Timestamp</h2>
+      <input id="timestampInput" placeholder="Seconds or ms" />
       <button onclick="convertTimestamp()">Convert</button>
       <pre id="timestampOutput"></pre>
     </div>
 
-    <!-- Markdown Preview -->
     <div class="card">
-      <h2>Markdown Preview</h2>
-      <textarea id="mdInput" rows="6" placeholder="# Title\n**bold** text"></textarea>
-      <button onclick="renderMarkdown()">Render</button>
-      <pre id="mdOutput"></pre>
+      <h2>JWT Decoder</h2>
+      <textarea id="jwtInput" placeholder="header.payload.signature"></textarea>
+      <button onclick="decodeJWT()">Decode</button>
+      <pre id="jwtOutput"></pre>
     </div>
+
+    <div class="card">
+      <h2>URL Encode / Decode</h2>
+      <textarea id="urlInput"></textarea>
+      <button onclick="encodeURL()">Encode</button>
+      <button onclick="decodeURL()">Decode</button>
+      <pre id="urlOutput"></pre>
+    </div>
+
+    <div class="card">
+      <h2>Text Diff (Line)</h2>
+      <textarea id="diffA" placeholder="Text A"></textarea>
+      <textarea id="diffB" placeholder="Text B"></textarea>
+      <button onclick="diffText()">Compare</button>
+      <pre id="diffOutput"></pre>
+    </div>
+
+    <div class="card">
+      <h2>Regex Tester</h2>
+      <input id="regexPattern" placeholder="Pattern" />
+      <input id="regexFlags" placeholder="Flags (gim)" />
+      <textarea id="regexText"></textarea>
+      <button onclick="testRegex()">Test</button>
+      <pre id="regexOutput"></pre>
+    </div>
+
   </main>
 
   <footer>
-    Built for GitHub Pages. One file. Zero excuses.
+    Static. Offline. GitHub Pages ready.
   </footer>
 
   <script>
-    function formatJSON() {
-      const input = document.getElementById('jsonInput').value;
-      const output = document.getElementById('jsonOutput');
+    function formatJSON(pretty) {
       try {
-        const obj = JSON.parse(input);
-        output.textContent = JSON.stringify(obj, null, 2);
-      } catch (e) {
-        output.textContent = 'Invalid JSON';
-      }
+        const obj = JSON.parse(jsonInput.value);
+        jsonOutput.textContent = JSON.stringify(obj, null, pretty ? 2 : 0);
+      } catch { jsonOutput.textContent = 'Invalid JSON'; }
+    }
+
+    function encodeB64() {
+      b64Output.textContent = btoa(b64Input.value);
+    }
+
+    function decodeB64() {
+      try { b64Output.textContent = atob(b64Input.value); }
+      catch { b64Output.textContent = 'Invalid Base64'; }
     }
 
     function checkStrength() {
-      const pwd = document.getElementById('passwordInput').value;
-      const out = document.getElementById('strengthResult');
-      let score = 0;
-      if (pwd.length >= 8) score++;
-      if (/[A-Z]/.test(pwd)) score++;
-      if (/[0-9]/.test(pwd)) score++;
-      if (/[^A-Za-z0-9]/.test(pwd)) score++;
-
-      if (!pwd) {
-        out.textContent = '';
-        return;
-      }
-
-      if (score <= 1) {
-        out.textContent = 'Weak';
-        out.style.color = 'var(--bad)';
-      } else if (score === 2) {
-        out.textContent = 'Medium';
-        out.style.color = '#eab308';
-      } else {
-        out.textContent = 'Strong';
-        out.style.color = 'var(--good)';
-      }
+      const p = passwordInput.value;
+      let s = 0;
+      if (p.length >= 8) s++;
+      if (/[A-Z]/.test(p)) s++;
+      if (/[0-9]/.test(p)) s++;
+      if (/[^A-Za-z0-9]/.test(p)) s++;
+      passwordOutput.textContent = p ? (s < 2 ? 'Weak' : s === 2 ? 'Medium' : 'Strong') : '';
     }
 
     function convertTimestamp() {
-      const val = document.getElementById('timestampInput').value;
-      const out = document.getElementById('timestampOutput');
-      const num = Number(val);
-      if (!num) {
-        out.textContent = 'Invalid timestamp';
-        return;
-      }
-      const date = new Date(num * 1000);
-      out.textContent = date.toString();
+      const n = Number(timestampInput.value);
+      if (!n) return timestampOutput.textContent = 'Invalid timestamp';
+      timestampOutput.textContent = new Date(n < 1e12 ? n * 1000 : n).toString();
     }
 
-    function renderMarkdown() {
-      const src = document.getElementById('mdInput').value;
-      let html = src
-        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-        .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>')
-        .replace(/\*(.*)\*/gim, '<i>$1</i>')
-        .replace(/\n$/gim, '<br />');
-      document.getElementById('mdOutput').innerHTML = html;
+    function decodeJWT() {
+      try {
+        const [h, p] = jwtInput.value.split('.');
+        const decode = s => JSON.parse(atob(s.replace(/-/g,'+').replace(/_/g,'/')));
+        jwtOutput.textContent = JSON.stringify({ header: decode(h), payload: decode(p) }, null, 2);
+      } catch { jwtOutput.textContent = 'Invalid JWT'; }
+    }
+
+    function encodeURL() { urlOutput.textContent = encodeURIComponent(urlInput.value); }
+    function decodeURL() { try { urlOutput.textContent = decodeURIComponent(urlInput.value); } catch { urlOutput.textContent = 'Invalid URL encoding'; } }
+
+    function diffText() {
+      const a = diffA.value.split('\n');
+      const b = diffB.value.split('\n');
+      let out = '';
+      a.forEach((line,i)=>{ if(line!==b[i]) out += `- ${line}\n+ ${b[i]||''}\n`; });
+      diffOutput.textContent = out || 'No differences';
+    }
+
+    function testRegex() {
+      try {
+        const r = new RegExp(regexPattern.value, regexFlags.value);
+        regexOutput.textContent = JSON.stringify(regexText.value.match(r), null, 2);
+      } catch { regexOutput.textContent = 'Invalid regex'; }
     }
   </script>
 </body>
